@@ -1,0 +1,27 @@
+body{
+	font-family: Tahoma ;
+	line-height: 40px;
+	font-size: 17px;
+}
+.container{
+	width: 600px;
+	margin: 0 auto;
+	border: double 7px gray;
+	padding: 20px;
+	background-color:#dffcf2;
+}
+.msg{
+	min-width: 300px;
+}
+.err{
+	background-color:#b20c0c;
+}
+.correct{
+	background-color: #2c6b02;
+}
+.container form span{
+	color: #fff;
+	border-radius: 5px;
+	padding: 2px;
+	font-size:15px;
+}

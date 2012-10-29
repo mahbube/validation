@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>form</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="jquery-1.6.2.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+<div class='container' >
+	<!-- step1-add this to form tag: onsubmit="return chkValidate(this)" -->
+	<form onsubmit="return chkValidate(this)" method="post">
+		<table>
+			<tr>
+				<td>User name:</td>
+				<!-- step2- call validate function on onblur event of input tag like this : -->
+				<td><input type="text" class='us' onblur="return validate(this,'text','choose a username','1')" /></td>
+				<!-- step3- as u see, the first arguments is"this" , the second is the type of validation u need , the third argument is the massage u that show the user when enter uncorrect (not valid ) input , the 4th arguments is the minimum length of input and the 5th is the maximum lenght-->
+				<td class='msg'><span class="us_msg" ></span></td>
+				<!-- step4- after input u should add a span tag that the span class name  should be the same as input class name + (_msg )   -->
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type="password" class='ps' id='passConf' onblur="return validate(this,'notEmpty','choose a pass by 3-12 character','3','12')"/></td>
+				<td ><span class="ps_msg"></span></td>
+			</tr>
+			<tr>
+				<td> Confirm:</td>
+				<!-- step5-in step3 I explain 5 arguments of validate function.now the 6th argument is used when the type of validate is 'confirm'.the 6th argument is the id of input that the value input should  matche by that. eg, in top u see the password input that its id is 'passConf', and the below the input that user should confirm the pass on it.   -->
+				<td><input type="password" class='conf' onblur="return validate(this,'confirm','dont matche','3','12' ,'passConf')" /></td>
+				<td><span class="conf_msg"></span></td>
+			</tr>
+			<tr>
+				<td>Numberd:</td>
+				<td><input type="text" class='nu'id='d' onblur="return validate(this,'onlyNumber','choose a number','3')"/></td>
+				<td><span class="nu_msg"></span></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" class='em' onblur="return validate(this,'email','it is not a valid Email')"/></td>
+				<td><span class="em_msg"></span></td>
+			</tr>
+			<tr>
+				<td>Date:</td>
+				<td><input type="text" class="dt" onblur="return validate(this,'date','Enter the date in this patern: 1990/05/25')"/></td>
+				<td><span class="dt_msg"></span></td>
+			</tr>
+			<tr>
+				<td>Meli cod:</td>
+				<td><input type="text" class="cod" onblur="return validate(this,'melliCod','Enter ur Melli Cod') "/></td>
+				<td><span class="cod_msg"></span></td>
+			</tr>
+			<tr>
+				<td>Website:</td>
+				<td><input type="text" class="web" onblur="return validate(this,'website','this is not a link','empty')" /></td>
+				<td><span class="web_msg"></span></td>
+			</tr>
+			<tr>
+				<td>Score:</td>
+				<td><input type="text" class="score" onblur="return validate(this,'range','the score is in range of 0-20','0','20')" /></td>
+				<!-- step6- when the type argomunt for validate function is 'range', user should enter a number in range of two last argomunt of function(in this example between 0 and 20) -->
+				<td><span class="score_msg"></span></td>
+			</tr>
+			<tr>
+				<td>sex:</td>
+				<td>
+					<!-- step7- when u want that user choose one of radio buttom, just call function on one of the inputs that has same name -->
+					Femail<input type="radio" name="sex" onblur="return validate(this,'radio','choose one of these')" class="sex" />
+	   				Mail<input type="radio" name="sex" value='Mail'  />
+				</td>
+				<td><span class="sex_msg"></span></td>
+			</tr>
+			<tr>
+				<td>Lesson:</td>
+				<td>
+					<select class="les"  onblur="return validate(this,'select','select one of this')">
+						<!-- step8- when u want the user select one of the option, just put the value of 1st option 'select' -->
+				    	<option value="select">select</option>
+				    	<option>Mathe</option>
+				        <option>Phisycs</option>
+				        <option>English</option>
+	   				</select>
+				</td>
+				<td><span class="les_msg"></span></td>
+			</tr>
+			<tr>
+				<td colspan='3'><input type="submit"  /></td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+</body>
+</html>
